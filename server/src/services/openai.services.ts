@@ -21,7 +21,7 @@ export async function generateJiraTicket(request:string) {
         ]
     });
 
-    return response.output_text;
+    return JSON.parse(response.output_text);
 }
 
 // Function accepts request text
