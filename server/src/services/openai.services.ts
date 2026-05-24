@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import { basePrompt } from "../prompts/basePrompt";
 
 // Create OpenAI client
 const client = new OpenAI({
@@ -12,7 +13,7 @@ export async function generateJiraTicket(request:string) {
         input: [
             {
                 role: "system",
-                content: `You are a Jira ticket generator. Return structured JSON only with ticketType, title, description, warnings, blockers`,
+                content: basePrompt,
             },
             {
                 role: "user",
