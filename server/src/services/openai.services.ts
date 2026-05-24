@@ -8,7 +8,7 @@ const client = new OpenAI({
 // Create reusable function
 export async function generateJiraTicket(request:string) {
     const response = await client.responses.create({
-        model: "gpt-5.4-mini",
+        model: "gpt-4o-mini",
         input: [
             {
                 role: "system",
@@ -17,8 +17,35 @@ export async function generateJiraTicket(request:string) {
             {
                 role: "user",
                 content: request
+            },    
+        ],
+        text: {
+            format: {
+                type: "json_schema",
+                name: "jira_ticket", 
+                schema: {
+                    type: "object",
+                    additionalProperties: false,
+                    properties:  {
+                        ticketType: {
+                            type: "string",
+                            enum: ["Task,", "Bug", "Feature", "Import", "Export"]
+                        },
+                        title: { type: "string"},
+                        description: { type: "string"},
+                        warnings: {
+                            type: "array",
+                            items: { type: "string"}
+                        },
+                        blockers: {
+                            type: "array",
+                            items: { type: "string"}
+                        }
+                    },
+                    required: ["ticketType", "title", "description", "warnings", "blockers"]
+                }, 
             }
-        ]
+        }
     });
 
     return JSON.parse(response.output_text);
