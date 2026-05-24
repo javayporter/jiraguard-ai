@@ -1,5 +1,6 @@
 import OpenAI from "openai";
 import { basePrompt } from "../prompts/basePrompt";
+import { ftpRules } from "../prompts/ftpRules";
 
 // Create OpenAI client
 const client = new OpenAI({
@@ -13,7 +14,7 @@ export async function generateJiraTicket(request:string) {
         input: [
             {
                 role: "system",
-                content: basePrompt,
+                content: `${basePrompt} ${ftpRules}`
             },
             {
                 role: "user",
