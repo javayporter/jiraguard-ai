@@ -13,6 +13,7 @@ router.post("/generate-ticket", async (req, res) =>{
             raw: result
         });
     } catch (err) {
+        console.log("Error Returned", err)
         res.status(500).json({ error: "failed to generate ticket"})
     }
 });

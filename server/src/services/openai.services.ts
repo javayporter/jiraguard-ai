@@ -8,7 +8,7 @@ const client = new OpenAI({
 // Create reusable function
 export async function generateJiraTicket(request:string) {
     const response = await client.responses.create({
-        model: "gpt-5.3-mini",
+        model: "gpt-5.4-mini",
         input: [
             {
                 role: "system",
