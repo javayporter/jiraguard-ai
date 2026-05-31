@@ -9,4 +9,15 @@ FTP Rules:
 - Verify DMS prequalification status
 - Confirm whether dealer already has a live integration
 - Include existing feed information if applicable
+
+Title Format:
+- FTP ticket titles must follow this format:
+  FTP | Dealer Name | DMS Name | Purpose
+
+Examples:
+- FTP | Collier RV | Motility | New Site Launch
+- FTP | RGV RV Sales | Dealer Center | New DMS
+- FTP | Camping World | Motility | DMS Migration
+
+
 `;
